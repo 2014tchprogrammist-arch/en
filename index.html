@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Four Seasons of Birthdays | A Calendar of Grace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fefaf5;
+      font-family: 'Inter', sans-serif;
+      color: #2a2420;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* hero section — refined and tranquil */
+    .hero {
+      text-align: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.8rem;
+      font-weight: 500;
+      color: #3e2a1e;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #7a6858;
+      max-width: 620px;
+      margin: 0.8rem auto 0;
+      border-top: 1px solid #ede2d8;
+      padding-top: 1.2rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* 4-column grid — responsive */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1.8rem;
+      transition: all 0.3s ease;
+      border: 1px solid #f0e4db;
+      box-shadow: 0 10px 25px -12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card:hover {
+      border-color: #dacbbc;
+      box-shadow: 0 20px 30px -14px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .card-inner {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* seasonal accent colors via subtle header border */
+    .season-tag {
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: #3e2c1f;
+      line-height: 1.2;
+    }
+
+    .date {
+      font-size: 0.8rem;
+      color: #9a7f68;
+      border-bottom: 1px dashed #ede0d6;
+      padding-bottom: 0.9rem;
+      margin-bottom: 1.2rem;
+      width: 100%;
+    }
+
+    /* unified narrative text — graceful, integrated, descriptive */
+    .narrative {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #3c322a;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .narrative p {
+      margin-bottom: 1rem;
+    }
+
+    .signature-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: #b2805e;
+      border-top: 1px solid #f0e4da;
+      padding-top: 0.9rem;
+      margin-top: 0.75rem;
+      text-align: right;
+    }
+
+    /* translation dropdown — refined etiquette */
+    .translation-block {
+      margin-top: 1.5rem;
+      border-top: 1px solid #f0e6df;
+      padding-top: 1rem;
+    }
+
+    .translate-btn {
+      background: transparent;
+      border: 1px solid #e2d4c9;
+      padding: 0.4rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      color: #8b6f58;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fefaf6;
+    }
+
+    .translate-btn:hover {
+      background: #f6ede5;
+      border-color: #cbbaa9;
+      color: #5e3f2c;
+    }
+
+    .translation-text {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      background: #fefbf8;
+      border-left: 3px solid #e6d6ca;
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: #5c4c3d;
+      border-radius: 0 12px 12px 0;
+      display: none;
+      font-weight: 400;
+    }
+
+    .translation-text.show {
+      display: block;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 5rem;
+      font-size: 0.8rem;
+      color: #b7a18d;
+      letter-spacing: 0.3px;
+      border-top: 1px solid #efe3d9;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .card-inner {
+        padding: 1.5rem;
+      }
+    }
+
+    /* seasonal tag background tints */
+    .spring-tag { background: #f1e8df; color: #9b6f50; }
+    .summer-tag { background: #f6ede5; color: #c28754; }
+    .autumn-tag { background: #f4eae2; color: #b56f3a; }
+    .winter-tag { background: #eff0ec; color: #7e6b5a; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>Four seasons,<br>four birthdays</h1>
+    <p>A quadrille of celebrations — where the rhythm of the year meets the art of hospitality. Cuisine, decoration, and ritual intertwined in a single gracious narrative.</p>
+  </div>
+
+  <div class="grid">
+    
+    <!-- SPRING · 花見の春 · ephemeral bloom -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="season-tag spring-tag">🌸 SPRING · VER</div>
+        <h2>Blossom & Renewal</h2>
+        <div class="date">📆 12 April · cherry moon</div>
+        
+        <div class="narrative" id="narrative-en-spring">
+          <p>On an April afternoon when the cherry trees unveil their tender pink, the house breathes with spring. Low tables are dressed in pale silk, and branches of sakura arranged in unglazed pots — an ikebana meditation. The meal is a quiet ode to freshness: chirashi-zushi adorned with salmon and pickled petals, clear dashi scented with yuzu, and delicate sakura mochi served on magnolia leaves. Each guest is welcomed with a hand-painted egg and a cup of warm matcha.</p>
+          <p>We decorate with paper lanterns bearing haiku, scattered silk blossoms, and woven willow baskets holding wild violets. Together we stroll beneath the flowering trees, collecting petals to press into washi paper keepsakes. Later, linked verses (renku) are composed — a collaborative poem that captures the fleeting beauty of the day. Food, adornment, and ritual become one: a celebration that honors impermanence with tenderness and refined simplicity.</p>
+          <div class="signature-line">— like petals on still water, we honor what blooms and fades.</div>
+        </div>
+        
+        <div class="translation-block">
+          <button class="translate-btn" data-target="trans-spring">🌸 Read in Russian / по-русски</button>
+          <div id="trans-spring" class="translation-text">
+            <p>Апрельским днём, когда вишни распускают свои нежно-розовые облака, дом наполняется весенним дыханием. Низкие столы накрыты бледным шёлком, ветви сакуры расставлены в неглазурованных сосудах — медитация икебаны. Трапеза — тихая ода свежести: тирасидзуси с лососем и маринованными лепестками, прозрачный даси с юдзу, нежные сакура-моти на листьях магнолии. Каждого гостя встречают расписным яйцом и чашкой тёплого матча.</p>
+            <p>Украшения: бумажные фонарики с хайку, шёлковые цветы, плетёные корзины с фиалками. Мы гуляем под цветущими деревьями, собирая лепестки, чтобы засушить их в рисовой бумаге. Затем сочиняем рэнку — совместное стихотворение, запечатлевающее мимолётную красоту дня. Еда, убранство и ритуал сливаются воедино: праздник, который чтит недолговечность с нежностью и утончённой простотой.</p>
+            <div class="signature-line">— словно лепестки на тихой воде, мы чтим то, что расцветает и уходит.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SUMMER · 盛夏の宴 · solstice abundance -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="season-tag summer-tag">☀️ SUMMER · ÉTÉ</div>
+        <h2>Solstice Lumière</h2>
+        <div class="date">📆 21 June · longest light</div>
+        
+        <div class="narrative" id="narrative-en-summer">
+          <p>On the summer solstice, the house opens itself to golden hour and evening breeze. Tables draped in linen the colour of faded lavender host a feast of Mediterranean abundance: chilled cucumber soup with mint, a grand seafood paella simmered with saffron, and a peach-rosemary galette glazed with honey. Garlands of olive branches and wild fennel hang from doorways; jars of citronella candles flicker along the garden path.</p>
+          <p>We adorn the space with terracotta pots brimming with basil and marigolds, hand-dyed napkins in ochre and rust, and a long garland of dried citrus wheels. As dusk settles, we gather around a fire pit — guitars, stories, and limoncello toasts beneath a sky that lingers. The celebration is unhurried, a languid arc from afternoon preparation to starry night, where every dish, every flower, every shared laugh weaves a tapestry of warmth and generosity.</p>
+          <div class="signature-line">— a feast where time slows to the rhythm of cicadas and clinking glasses.</div>
+        </div>
+        
+        <div class="translation-block">
+          <button class="translate-btn" data-target="trans-summer">☀️ Read in Russian / по-русски</button>
+          <div id="trans-summer" class="translation-text">
+            <p>В день летнего солнцестояния дом распахивается навстречу золотому часу и вечернему бризу. Столы в льняных скатертях цвета лаванды принимают средиземноморское изобилие: холодный огуречный суп с мятой, грандиозную паэлью с шафраном и персиковую галату с розмарином под мёдом. Гирлянды из оливковых ветвей и дикого фенхеля свисают с дверных проёмов; банки с цитронелловыми свечами мерцают вдоль садовой дорожки.</p>
+            <p>Убранство: терракотовые горшки с базиликом и бархатцами, салфетки ручной окраски в охристых тонах, длинная гирлянда из сушёных цитрусов. С наступлением сумерек мы собираемся у костра — гитары, истории, тосты с лимончелло под долгим небом. Праздник течёт неторопливо, от дневных приготовлений до звёздной ночи, где каждое блюдо, каждый цветок и смех сплетаются в ткань тепла и щедрости.</p>
+            <div class="signature-line">— пир, где время замедляется под ритм цикад и звон бокалов.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- AUTUMN · 秋の収穫 · harvest & hearth -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="season-tag autumn-tag">🍂 AUTUMN · AUTOMNE</div>
+        <h2>Golden Equinox</h2>
+        <div class="date">📆 23 September · amber & earth</div>
+        
+        <div class="narrative" id="narrative-en-autumn">
+          <p>September's equinox brings a palette of rust, amber, and deep burgundy. The house is dressed in dried hydrangeas, branches of crabapple, and velvet pumpkins nestled among linen runners. The meal celebrates the harvest: roasted squash soup with sage, a wild mushroom tart with thyme, slow-braised lamb with quince, and a pear-almond cake drizzled with burnt honey caramel. Candles in amber glass cast long shadows as dusk arrives early.</p>
+          <p>We adorn the home with pressed leaves strung on twine, antique brass candlesticks, and small handwritten place cards tied with cinnamon sticks. The afternoon is spent foraging for late blackberries, then gathered around the fireplace to share what we are grateful for — a ritual of quiet appreciation. Every element, from the earthenware plates to the smell of woodsmoke, speaks of abundance and gentle transition. Food, decoration, and ritual are one seamless act of hospitality.</p>
+          <div class="signature-line">— a table set for gratitude, where each course tells a story of the earth.</div>
+        </div>
+        
+        <div class="translation-block">
+          <button class="translate-btn" data-target="trans-autumn">🍂 Read in Russian / по-русски</button>
+          <div id="trans-autumn" class="translation-text">
+            <p>Сентябрьское равноденствие приносит палитру охры, янтаря и глубокого бордо. Дом украшают сухие гортензии, ветви райской яблони и бархатистые тыквы среди льняных дорожек. Трапеза славит урожай: суп из печёной тыквы с шалфеем, тарт с лесными грибами и тимьяном, медленно тушёную ягнятину с айвой, грушево-миндальный торт с карамелью из жжёного мёда. Свечи в янтарных стаканах отбрасывают длинные тени, когда наступают ранние сумерки.</p>
+            <p>Украшения: прессованные листья на бечёвке, старинные латунные подсвечники, именные карточки, перевязанные палочками корицы. День начинается с прогулки за последней ежевикой, а завершается у камина — мы делимся тем, за что благодарны. Каждая деталь, от глиняной посуды до аромата дыма, говорит об изобилии и мягком переходе. Еда, убранство и ритуал становятся единым жестом радушия.</p>
+            <div class="signature-line">— стол, накрытый для благодарности, где каждое блюдо рассказывает историю земли.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- WINTER · 冬の灯り · hush & hearthfire -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="season-tag winter-tag">❄️ WINTER · HIVER</div>
+        <h2>Solstice Hearth</h2>
+        <div class="date">📆 21 December · longest night</div>
+        
+        <div class="narrative" id="narrative-en-winter">
+          <p>On the winter solstice, the home transforms into a sanctuary of candlelight and wool. No overhead light — only beeswax tapers in iron holders, casting a flickering glow on pine garlands and birch logs. The feast is one of slow comfort: gravlax with mustard-dill, a venison stew with juniper and lingonberry, and baked apples with cardamom custard. Mulled wine simmers on the stove, filling the rooms with clove and orange.</p>
+          <p>We adorn the space with eucalyptus branches, velvet ribbons in deep wine, and handwritten blessings tucked beneath each plate. The rituals are intimate: together we dip beeswax candles, write letters sealed with wax for the coming year, and gather by the fire for poetry and quiet song. Everything — from the first cup of spiced cocoa to the last ember — is unhurried, deliberate. Food and decoration become vessels for connection, each gesture a form of grace.</p>
+          <div class="signature-line">— a slow hymn to the returning light, cradled in warmth and silence.</div>
+        </div>
+        
+        <div class="translation-block">
+          <button class="translate-btn" data-target="trans-winter">❄️ Read in Russian / по-русски</button>
+          <div id="trans-winter" class="translation-text">
+            <p>В день зимнего солнцестояния дом превращается в убежище свечного света и шерсти. Нет электричества — только свечи из пчелиного воска в железных подсвечниках, мерцающие на сосновых гирляндах и берёзовых поленьях. Угощение — медленное и согревающее: гравилакс с горчично-укропным соусом, рагу из оленины с можжевельником и брусникой, печёные яблоки с кардамонным кремом. Глинтвейн томится на плите, наполняя комнаты ароматом гвоздики и апельсина.</p>
+            <p>Убранство: ветви эвкалипта, бархатные ленты глубокого винного оттенка, handwritten blessings под каждой тарелкой. Ритуалы сокровенны: вместе мы окунаем свечи, пишем письма, запечатанные сургучом, собираемся у камина для стихов и тихих песен. Всё — от первой чашки пряного какао до последнего уголька — неспешно и наполнено смыслом. Еда и убранство становятся сосудами для близости, каждое движение — жестом изящества.</p>
+            <div class="signature-line">— тихий гимн возвращающемуся свету, согретый теплом и тишиной.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-note">
+    ✦ four seasons, four celebrations — where cuisine, decoration, and ritual speak a single language of thoughtful hospitality ✦
+  </div>
+</div>
+
+<script>
+  // Gentle dropdown for translations — one open at a time, with subtle text toggle
+  const buttons = document.querySelectorAll('.translate-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetDiv = document.getElementById(targetId);
+      if (targetDiv) {
+        // close any other open translation for elegant clarity
+        document.querySelectorAll('.translation-text').forEach(block => {
+          if (block !== targetDiv && block.classList.contains('show')) {
+            block.classList.remove('show');
+            // reset corresponding button text if needed
+            const otherBtn = document.querySelector(`.translate-btn[data-target="${block.id}"]`);
+            if (otherBtn) {
+              const parentCard = otherBtn.closest('.card-inner');
+              if (parentCard) {
+                const season = parentCard.querySelector('.season-tag')?.innerText || '';
+                if (season.includes('SPRING')) otherBtn.innerHTML = '🌸 Read in Russian / по-русски';
+                else if (season.includes('SUMMER')) otherBtn.innerHTML = '☀️ Read in Russian / по-русски';
+                else if (season.includes('AUTUMN')) otherBtn.innerHTML = '🍂 Read in Russian / по-русски';
+                else if (season.includes('WINTER')) otherBtn.innerHTML = '❄️ Read in Russian / по-русски';
+                else otherBtn.innerHTML = '📖 Read in Russian';
+              }
+            }
+          }
+        });
+        targetDiv.classList.toggle('show');
+        // change button text elegantly
+        if (targetDiv.classList.contains('show')) {
+          this.innerHTML = '📖 Hide translation / скрыть';
+        } else {
+          const parentCard = this.closest('.card-inner');
+          if (parentCard) {
+            const season = parentCard.querySelector('.season-tag')?.innerText || '';
+            if (season.includes('SPRING')) this.innerHTML = '🌸 Read in Russian / по-русски';
+            else if (season.includes('SUMMER')) this.innerHTML = '☀️ Read in Russian / по-русски';
+            else if (season.includes('AUTUMN')) this.innerHTML = '🍂 Read in Russian / по-русски';
+            else if (season.includes('WINTER')) this.innerHTML = '❄️ Read in Russian / по-русски';
+            else this.innerHTML = '📖 Read in Russian';
+          } else {
+            this.innerHTML = '📖 Read in Russian';
+          }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
